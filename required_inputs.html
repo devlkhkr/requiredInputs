@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button.on{
+            background: #3e19e5;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="input_required" onkeyup="inputsRequiredCheck()" />
+    <input type="text" class="input_required" onkeyup="inputsRequiredCheck()" />
+    <input type="text" class="input_required" onkeyup="inputsRequiredCheck()" />
+    <input type="text" class="input_required" onkeyup="inputsRequiredCheck()" />
+    <button type="button" id="targetButton" class="">done</button>
+</body>
+<script>
+    var requiredInputs = document.getElementsByClassName("input_required"), //입력 체크되어야 하는 인풋 담기
+    targetButton = document.getElementById("targetButton"), // 변경 될 타겟 버튼 설정
+    btnChangeFlag = []; // 각 input의 길이를 담아줄 배열 생성
+    function inputsRequiredCheck(){
+        for(i = 0; i<requiredInputs.length; i++){ 
+            btnChangeFlag[i] = requiredInputs[i].value.length; //input 갯수만큼 반복 돌면서 해당하는 배열의 index에 input의 length를 할당해줌
+        }
+        if(btnChangeFlag.indexOf(0) === -1){ //배열에서 0 검색시 없으면 -1 반환
+            targetButton.classList.add("on")
+        }
+        else{
+            targetButton.classList.remove("on")
+        }
+    }
+</script>
+</html>
